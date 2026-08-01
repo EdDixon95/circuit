@@ -23,6 +23,9 @@ model User {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
+  entries       CompetitionEntry[]
+  gymStaffRoles GymStaff[]
+
   @@map("users")
 }
 
@@ -47,6 +50,8 @@ model Gym {
 
   competitions Competition[]
 
+  staff GymStaff[]
+
   @@map("gyms")
 }
 
@@ -66,8 +71,9 @@ model Competition {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  gym             Gym             @relation(fields: [gymId], references: [id])
-  competitionType CompetitionType @relation(fields: [competitionTypeId], references: [id])
+  gym             Gym                @relation(fields: [gymId], references: [id])
+  competitionType CompetitionType    @relation(fields: [competitionTypeId], references: [id])
+  entries         CompetitionEntry[]
 
   categories CompetitionCategory[]
   problems   CompetitionProblem[]
@@ -108,6 +114,8 @@ model CompetitionCategory {
 
   competition Competition @relation(fields: [competitionId], references: [id])
 
+  entries CompetitionEntry[]
+
   @@unique([competitionId, name])
   @@map("competition_categories")
 }
@@ -124,6 +132,71 @@ model CompetitionProblem {
 
   competition Competition @relation(fields: [competitionId], references: [id])
 
+  attempts Attempt[]
+
   @@unique([competitionId, problemNumber])
   @@map("competition_problems")
+}
+
+model GymStaff {
+  gymId  String    @map("gym_id") @db.Uuid
+  userId String    @map("user_id") @db.Uuid
+  role   StaffRole
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  gym  Gym  @relation(fields: [gymId], references: [id])
+  user User @relation(fields: [userId], references: [id])
+
+  @@id([gymId, userId])
+  @@map("gym_staff")
+}
+
+enum StaffRole {
+  ADMIN
+  STAFF
+}
+
+model CompetitionEntry {
+  id            String    @id @default(uuid()) @db.Uuid
+  competitionId String    @map("competition_id") @db.Uuid
+  userId        String    @map("user_id") @db.Uuid
+  categoryId    String?   @map("category_id") @db.Uuid
+  registeredAt  DateTime  @default(now()) @map("registered_at")
+  checkedInAt   DateTime? @map("checked_in_at")
+
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  competition Competition          @relation(fields: [competitionId], references: [id])
+  user        User                 @relation(fields: [userId], references: [id])
+  category    CompetitionCategory? @relation(fields: [categoryId], references: [id])
+
+  attempts Attempt[]
+
+  @@unique([competitionId, userId])
+  @@map("competition_entries")
+}
+
+model Attempt {
+  id                   String   @id @default(uuid()) @db.Uuid
+  competitionEntryId   String   @map("competition_entry_id") @db.Uuid
+  competitionProblemId String   @map("competition_problem_id") @db.Uuid
+  attemptNumber        Int      @map("attempt_number")
+  result               Result
+  recordedAt           DateTime @default(now()) @map("recorded_at")
+
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  entry   CompetitionEntry   @relation(fields: [competitionEntryId], references: [id])
+  problem CompetitionProblem @relation(fields: [competitionProblemId], references: [id])
+
+  @@unique([competitionEntryId, competitionProblemId, attemptNumber])
+  @@map("attempts")
+}
+
+enum Result {
+  TOP
+  ZONE
+  NONE
 }
