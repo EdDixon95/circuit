@@ -162,7 +162,7 @@ model CompetitionEntry {
   id            String    @id @default(uuid()) @db.Uuid
   competitionId String    @map("competition_id") @db.Uuid
   userId        String    @map("user_id") @db.Uuid
-  categoryId    String?   @map("category_id") @db.Uuid
+  categoryId    String   @map("category_id") @db.Uuid
   registeredAt  DateTime  @default(now()) @map("registered_at")
   checkedInAt   DateTime? @map("checked_in_at")
 
@@ -170,7 +170,7 @@ model CompetitionEntry {
 
   competition Competition          @relation(fields: [competitionId], references: [id])
   user        User                 @relation(fields: [userId], references: [id])
-  category    CompetitionCategory? @relation(fields: [categoryId], references: [id])
+  category    CompetitionCategory @relation(fields: [categoryId], references: [id])
 
   attempts Attempt[]
 
