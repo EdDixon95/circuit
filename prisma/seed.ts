@@ -14,6 +14,8 @@ import {
   User,
 } from "@prisma/client";
 
+import bcrypt from "bcryptjs";
+
 const prisma = new PrismaClient();
 
 async function main() {
@@ -354,102 +356,104 @@ async function seedProblems(competitions: Competition[]) {
 }
 
 async function seedUsers() {
+  const passwordHash = await bcrypt.hash("password123", 10);
+
   const users = [
     {
       firstName: "John",
       lastName: "Doe",
       email: "john.doe@example.com",
-      passwordHash: "hashedpassword",
+      passwordHash,
     },
     {
       firstName: "Jane",
       lastName: "Smith",
       email: "jane.smith@example.com",
-      passwordHash: "hashedpassword",
+      passwordHash,
     },
     {
       firstName: "Alice",
       lastName: "Johnson",
       email: "alice.johnson@example.com",
-      passwordHash: "hashedpassword",
+      passwordHash,
     },
     {
       firstName: "Bob",
       lastName: "Williams",
       email: "bob.williams@example.com",
-      passwordHash: "hashedpassword",
+      passwordHash,
     },
     {
       firstName: "Charlie",
       lastName: "Brown",
       email: "charlie.brown@example.com",
-      passwordHash: "hashedpassword",
+      passwordHash,
     },
     {
       firstName: "Emily",
       lastName: "Taylor",
       email: "emily.taylor@example.com",
-      passwordHash: "hashedpassword",
+      passwordHash,
     },
     {
       firstName: "Jack",
       lastName: "Wilson",
       email: "jack.wilson@example.com",
-      passwordHash: "hashedpassword",
+      passwordHash,
     },
     {
       firstName: "Sophie",
       lastName: "Davies",
       email: "sophie.davies@example.com",
-      passwordHash: "hashedpassword",
+      passwordHash,
     },
     {
       firstName: "Harry",
       lastName: "Evans",
       email: "harry.evans@example.com",
-      passwordHash: "hashedpassword",
+      passwordHash,
     },
     {
       firstName: "Olivia",
       lastName: "Thomas",
       email: "olivia.thomas@example.com",
-      passwordHash: "hashedpassword",
+      passwordHash,
     },
     {
       firstName: "George",
       lastName: "Roberts",
       email: "george.roberts@example.com",
-      passwordHash: "hashedpassword",
+      passwordHash,
     },
     {
       firstName: "Lucy",
       lastName: "Walker",
       email: "lucy.walker@example.com",
-      passwordHash: "hashedpassword",
+      passwordHash,
     },
     {
       firstName: "James",
       lastName: "Wright",
       email: "james.wright@example.com",
-      passwordHash: "hashedpassword",
+      passwordHash,
     },
     {
       firstName: "Ella",
       lastName: "Thompson",
       email: "ella.thompson@example.com",
-      passwordHash: "hashedpassword",
+      passwordHash,
     },
     {
       firstName: "Thomas",
       lastName: "White",
       email: "thomas.white@example.com",
-      passwordHash: "hashedpassword",
+      passwordHash,
     },
     {
       firstName: "Grace",
       lastName: "Hughes",
       email: "grace.hughes@example.com",
-      passwordHash: "hashedpassword",
+      passwordHash,
     },
   ];
 
@@ -458,7 +462,9 @@ async function seedUsers() {
   for (const user of users) {
     const createdUser = await prisma.user.upsert({
       where: { email: user.email },
-      update: {},
+      update: {
+        passwordHash,
+      },
       create: user,
     });
 
