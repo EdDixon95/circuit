@@ -19,15 +19,17 @@ const CompetitionHeader = ({ competition }: Props) => {
     <div className="mx-auto w-full max-w-3xl px-4 sm:px-6">
       {/* Header */}
       <div className="flex items-center gap-4 sm:gap-8">
-        <div className="flex h-32 w-32 shrink-0 items-center justify-center rounded-full bg-white shadow-md ">
-          <Image
-            src={competition?.gym.logoUrl ?? ""}
-            alt={competition?.gym.name || "Gym Logo"}
-            width={80}
-            height={80}
-            className="object-contain"
-          />
-        </div>
+        {competition?.gym.logoUrl && (
+          <div className="flex h-32 w-32 shrink-0 items-center justify-center rounded-full bg-white shadow-md ">
+            <Image
+              src={competition?.gym.logoUrl ?? ""}
+              alt={competition?.gym.name || "Gym Logo"}
+              width={80}
+              height={80}
+              className="object-contain"
+            />
+          </div>
+        )}
 
         <div className="min-w-0 flex-1">
           <span className="inline-block rounded-lg bg-green-100 px-3 py-2 text-sm font-semibold text-green-700">

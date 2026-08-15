@@ -125,6 +125,18 @@ async function seedCompetitions(
       description:
         "Celebrate the start of the new year with our Winter Boulder League. Challenge yourself on 25 new problems, compete with friends and see how you rank across the season.",
     },
+    {
+      gymId: gyms[1].id,
+      name: "Flash Comp",
+      competitionTypeId: competitionTypes[2].id,
+      slug: "flash",
+      startDate: new Date("2027-01-01"),
+      endDate: new Date("2027-01-01"),
+      registrationOpen: new Date("2026-12-01"),
+      registrationClose: new Date("2026-12-31"),
+      status: Status.OPEN,
+      description: "Flash the boulders, one attempt each, make it count!",
+    },
   ];
 
   const createdCompetitions = [];
@@ -163,6 +175,11 @@ async function seedCompetitionCategories(competitions: Competition[]) {
       competitionId: competitions[0].id,
       name: "Youth Female",
       description: "U18 Female Category",
+    },
+    {
+      competitionId: competitions[1].id,
+      name: "Open",
+      description: "Open Category",
     },
   ];
 

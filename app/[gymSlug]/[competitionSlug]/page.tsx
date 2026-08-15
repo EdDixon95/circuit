@@ -1,8 +1,16 @@
+import { auth } from "@/auth";
 import CompetitionHomeInfo from "@/components/CompetitionHeader";
 import CompetitionInfoCard from "@/components/CompetitionInfoCard";
+import CompetitionProgressCard from "@/components/CompetitionProgressCard";
+import CompetitionRegistration from "@/components/CompetitionRegistration";
 import LeaderboardPreview from "@/components/LeaderboardPreview";
 import { calculateLeaderboards, calculateScore } from "@/Lib/leaderboard";
 import { prisma } from "@/Lib/prisma";
+import {
+  calculateAttemptedProblems,
+  calculateProblemStatuses,
+  calculateProgress,
+} from "@/Lib/progress";
 
 import { notFound } from "next/navigation";
 
@@ -45,6 +53,22 @@ const EventDetailsPage = async ({
     notFound();
   }
 
+  const session = await auth();
+
+  const entry = session
+    ? await prisma.competitionEntry.findUnique({
+        where: {
+          competitionId_userId: {
+            competitionId: competition.id,
+            userId: session.user.id,
+          },
+        },
+        include: {
+          attempts: true,
+        },
+      })
+    : null;
+
   const leaderboards = calculateLeaderboards(
     competition.entries,
     competition.categories,
@@ -53,10 +77,27 @@ const EventDetailsPage = async ({
   return (
     <main className="m-1">
       <CompetitionHomeInfo competition={competition} />
-      <button className="mt-6 w-full rounded-xl bg-green-600 py-3.5 text-lg font-semibold text-white transition hover:bg-green-700">
-        Register / Enter Competition
-      </button>
-      <CompetitionInfoCard competition={competition} />
+
+      {entry ? (
+        <>
+          <CompetitionProgressCard
+            progress={calculateProgress(entry.attempts, competition.problems)}
+            attemptedProblems={calculateAttemptedProblems(entry.attempts)}
+            problemStatuses={calculateProblemStatuses(
+              competition.problems,
+              entry.attempts,
+            )}
+          />
+        </>
+      ) : (
+        <>
+          <CompetitionInfoCard competition={competition} />
+          <CompetitionRegistration
+            competitionId={competition.id}
+            categories={competition.categories}
+          />
+        </>
+      )}
       <LeaderboardPreview leaderboards={leaderboards} />
     </main>
   );
