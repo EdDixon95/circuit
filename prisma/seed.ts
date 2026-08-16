@@ -12,9 +12,11 @@ import {
   GymStaff,
   CompetitionProblem,
   User,
+  ProblemColour,
 } from "@prisma/client";
 
 import bcrypt from "bcryptjs";
+import { PROXY_FILENAME } from "next/dist/lib/constants";
 
 const prisma = new PrismaClient();
 
@@ -48,7 +50,7 @@ async function seedCompetitionTypes() {
       description: "Friendly competition for everyone",
     },
     {
-      name: "Redpoint",
+      name: "Redoint",
       description: "Unlimited attempts over the competition period",
     },
     {
@@ -207,151 +209,151 @@ async function seedProblems(competitions: Competition[]) {
       competitionId: competitions[0].id,
       problemNumber: 1,
       grade: "V0",
-      colour: "red",
+      colour: ProblemColour.RED,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 2,
       grade: "V0",
-      colour: "blue",
+      colour: ProblemColour.BLUE,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 3,
       grade: "V1",
-      colour: "green",
+      colour: ProblemColour.GREEN,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 4,
       grade: "V1",
-      colour: "yellow",
+      colour: ProblemColour.YELLOW,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 5,
       grade: "V1",
-      colour: "purple",
+      colour: ProblemColour.PURPLE,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 6,
       grade: "V2",
-      colour: "orange",
+      colour: ProblemColour.ORANGE,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 7,
       grade: "V2",
-      colour: "pink",
+      colour: ProblemColour.PINK,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 8,
       grade: "V2",
-      colour: "brown",
+      colour: ProblemColour.BROWN,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 9,
       grade: "V3",
-      colour: "white",
+      colour: ProblemColour.WHITE,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 10,
       grade: "V3",
-      colour: "black",
+      colour: ProblemColour.BLACK,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 11,
       grade: "V4",
-      colour: "red",
+      colour: ProblemColour.RED,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 12,
       grade: "V4",
-      colour: "blue",
+      colour: ProblemColour.BLUE,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 13,
       grade: "V5",
-      colour: "green",
+      colour: ProblemColour.GREEN,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 14,
       grade: "V5",
-      colour: "yellow",
+      colour: ProblemColour.YELLOW,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 15,
       grade: "V6",
-      colour: "purple",
+      colour: ProblemColour.PURPLE,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 16,
       grade: "V6",
-      colour: "orange",
+      colour: ProblemColour.ORANGE,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 17,
       grade: "V6",
-      colour: "pink",
+      colour: ProblemColour.PINK,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 18,
       grade: "V7",
-      colour: "brown",
+      colour: ProblemColour.BROWN,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 19,
       grade: "V7",
-      colour: "white",
+      colour: ProblemColour.WHITE,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 20,
       grade: "V8",
-      colour: "black",
+      colour: ProblemColour.BLACK,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 21,
       grade: "V8",
-      colour: "red",
+      colour: ProblemColour.RED,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 22,
       grade: "V8",
-      colour: "blue",
+      colour: ProblemColour.BLUE,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 23,
       grade: "V9",
-      colour: "green",
+      colour: ProblemColour.GREEN,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 24,
       grade: "V9",
-      colour: "yellow",
+      colour: ProblemColour.YELLOW,
     },
     {
       competitionId: competitions[0].id,
       problemNumber: 25,
       grade: "V10",
-      colour: "purple",
+      colour: ProblemColour.PURPLE,
     },
   ];
   const createdProblems: CompetitionProblem[] = [];
@@ -402,7 +404,7 @@ async function seedUsers() {
     },
     {
       firstName: "Charlie",
-      lastName: "Brown",
+      lastName: "brown",
       email: "charlie.brown@example.com",
       passwordHash,
     },
@@ -462,8 +464,8 @@ async function seedUsers() {
     },
     {
       firstName: "Thomas",
-      lastName: "White",
-      email: "thomas.white@example.com",
+      lastName: ProblemColour.WHITE,
+      email: "thomas.WHITE@example.com",
       passwordHash,
     },
     {

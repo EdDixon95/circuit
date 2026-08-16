@@ -24,7 +24,7 @@ const CompetitionProgressCard = ({
 }: Props) => {
   console.log(progress);
   return (
-    <div className="mt-4 m-auto border border-gray-100 rounded-2xl p-5 shadow flex flex-row">
+    <div className="mt-4 m-auto border card flex flex-row">
       <div className="mr-4 shrink-0">
         <CircularProgressBar progress={progress} />
       </div>
@@ -36,11 +36,19 @@ const CompetitionProgressCard = ({
         <div className="mt-3 overflow-x-auto pb-2">
           <div className="flex gap-3 w-max">
             {problemStatuses.map(({ problem, status }) => (
-              <ProblemProgressMarker
+              <div
+                className="flex shrink-0 flex-col items-center gap-1 "
                 key={problem.id}
-                problemNumber={problem.problemNumber}
-                status={status}
-              />
+              >
+                <ProblemProgressMarker
+                  problem={problem}
+                  status={status}
+                  size={1}
+                />
+                <span className="text-xs text-gray-600">
+                  {problem.problemNumber}
+                </span>
+              </div>
             ))}
           </div>
         </div>

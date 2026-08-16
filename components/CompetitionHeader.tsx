@@ -20,32 +20,32 @@ const CompetitionHeader = ({ competition }: Props) => {
       {/* Header */}
       <div className="flex items-center gap-4 sm:gap-8">
         {competition?.gym.logoUrl && (
-          <div className="flex h-32 w-32 shrink-0 items-center justify-center rounded-full bg-white shadow-md ">
+          <div className="flex h-25 w-25 shrink-0 items-center justify-center rounded-full bg-white shadow-md mr-2 mb-1">
             <Image
               src={competition?.gym.logoUrl ?? ""}
               alt={competition?.gym.name || "Gym Logo"}
-              width={80}
-              height={80}
+              width={60}
+              height={60}
               className="object-contain"
             />
           </div>
         )}
 
         <div className="min-w-0 flex-1">
-          <span className="inline-block rounded-lg bg-green-100 px-3 py-2 text-sm font-semibold text-green-700">
+          <span className="inline-block rounded-lg bg-green-100 px-2 py-1 text-xs font-semibold text-green-700">
             ONGOING
           </span>
 
-          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
+          <h1 className="mt-1 text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
             {competition?.name}
           </h1>
 
-          <p className="mt-1 text-xl text-gray-900">{competition?.gym.name}</p>
+          <p className="text-l text-gray-900">{competition?.gym.name}</p>
         </div>
       </div>
 
       {/* Details */}
-      <div className="mt-6 grid grid-cols-3 items-center">
+      <div className="my-3 grid grid-cols-3 items-center">
         <div className="flex min-w-0 items-center justify-center gap-2 border-r border-gray-200 px-2">
           <Calendar className="h-6 w-6 shrink-0" />
           <span className="text-center text-sm sm:text-base">

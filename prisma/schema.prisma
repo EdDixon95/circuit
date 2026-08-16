@@ -125,7 +125,7 @@ model CompetitionProblem {
   competitionId String  @map("competition_id") @db.Uuid
   problemNumber Int     @map("problem_number")
   grade         String?
-  colour        String?
+  colour        ProblemColour?
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
@@ -199,4 +199,17 @@ enum Result {
   TOP
   ZONE
   NONE
+}
+
+enum ProblemColour {
+  WHITE
+  BLACK
+  RED
+  ORANGE
+  YELLOW
+  GREEN
+  BLUE
+  PURPLE
+  PINK
+  BROWN
 }

@@ -1,25 +1,33 @@
+import { problemColourClasses } from "@/Lib/problemColours";
 import { ProblemStatus } from "@/Lib/progress";
+import { CompetitionProblem } from "@prisma/client";
 
 interface Props {
-  problemNumber: number;
   status: ProblemStatus;
+  size: 1 | 2 | 3;
+  problem: CompetitionProblem;
 }
 
-const ProblemProgressMarker = ({ problemNumber, status }: Props) => {
-  return (
-    <div className="flex shrink-0 flex-col items-center gap-1 ">
-      <div
-        className={`h-3 w-3 rounded-full border-2 ${
-          status === "COMPLETED"
-            ? "border-green-600 bg-green-600"
-            : status === "ATTEMPTED"
-              ? "border-green-600 bg-white"
-              : "border-gray-300 bg-white"
-        }`}
-      />
+const sizeClasses = {
+  1: "h-4 w-4 border-2",
+  2: "h-6 w-6 border-4",
+  3: "h-8 w-8 border-6",
+} as const;
 
-      <span className="text-xs text-gray-600">{problemNumber}</span>
-    </div>
+const ProblemProgressMarker = ({ status, size, problem }: Props) => {
+  const colourClasses = problemColourClasses[problem.colour ?? "GREEN"];
+
+  const statusClass =
+    status === "COMPLETED"
+      ? colourClasses.completed
+      : status === "ATTEMPTED"
+        ? colourClasses.attempted
+        : colourClasses.unattempted;
+
+  return (
+    <div
+      className={`rounded-full shrink-0  ${sizeClasses[size]} ${statusClass}`}
+    />
   );
 };
 

@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
 import CompetitionHomeInfo from "@/components/CompetitionHeader";
 import CompetitionInfoCard from "@/components/CompetitionInfoCard";
+import CompetitionProblemsCard from "@/components/CompetitionProblemsCard";
 import CompetitionProgressCard from "@/components/CompetitionProgressCard";
 import CompetitionRegistration from "@/components/CompetitionRegistration";
 import LeaderboardPreview from "@/components/LeaderboardPreview";
@@ -83,6 +84,12 @@ const EventDetailsPage = async ({
           <CompetitionProgressCard
             progress={calculateProgress(entry.attempts, competition.problems)}
             attemptedProblems={calculateAttemptedProblems(entry.attempts)}
+            problemStatuses={calculateProblemStatuses(
+              competition.problems,
+              entry.attempts,
+            )}
+          />
+          <CompetitionProblemsCard
             problemStatuses={calculateProblemStatuses(
               competition.problems,
               entry.attempts,

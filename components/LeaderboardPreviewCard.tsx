@@ -6,7 +6,7 @@ interface Props {
 
 const LeaderboardPreviewCard = ({ leaderboard }: Props) => {
   return (
-    <div className="w-[85%] shrink-0 snap-center rounded-2xl border border-gray-100 bg-white p-5 shadow">
+    <div className="w-[85%] shrink-0 snap-center card">
       <div className="flex justify-between items-baseline">
         <h3 className="mb-4 text-lg font-semibold">
           {leaderboard.category.name}
