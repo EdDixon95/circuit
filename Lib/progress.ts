@@ -49,6 +49,7 @@ export function calculateProblemStatuses(
     return {
       problem,
       status,
+      attemptCount: problemAttempts.length,
     };
   });
 }

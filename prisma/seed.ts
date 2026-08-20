@@ -16,7 +16,6 @@ import {
 } from "@prisma/client";
 
 import bcrypt from "bcryptjs";
-import { PROXY_FILENAME } from "next/dist/lib/constants";
 
 const prisma = new PrismaClient();
 
@@ -647,62 +646,52 @@ async function seedAttempts(
     {
       competitionEntryId: competitionEntries[0].id,
       competitionProblemId: competitionProblems[0].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[0].id,
       competitionProblemId: competitionProblems[1].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[0].id,
       competitionProblemId: competitionProblems[2].id,
-      attemptNumber: 2,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[0].id,
       competitionProblemId: competitionProblems[3].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[0].id,
       competitionProblemId: competitionProblems[4].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[0].id,
       competitionProblemId: competitionProblems[5].id,
-      attemptNumber: 2,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[0].id,
       competitionProblemId: competitionProblems[6].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[0].id,
       competitionProblemId: competitionProblems[7].id,
-      attemptNumber: 3,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[0].id,
       competitionProblemId: competitionProblems[8].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[0].id,
       competitionProblemId: competitionProblems[9].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
 
     // =========================================================
@@ -712,62 +701,52 @@ async function seedAttempts(
     {
       competitionEntryId: competitionEntries[1].id,
       competitionProblemId: competitionProblems[0].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[1].id,
       competitionProblemId: competitionProblems[1].id,
-      attemptNumber: 2,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[1].id,
       competitionProblemId: competitionProblems[2].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[1].id,
       competitionProblemId: competitionProblems[3].id,
-      attemptNumber: 2,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[1].id,
       competitionProblemId: competitionProblems[4].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[1].id,
       competitionProblemId: competitionProblems[5].id,
-      attemptNumber: 3,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[1].id,
       competitionProblemId: competitionProblems[6].id,
-      attemptNumber: 2,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[1].id,
       competitionProblemId: competitionProblems[7].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[1].id,
       competitionProblemId: competitionProblems[8].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
     {
       competitionEntryId: competitionEntries[1].id,
       competitionProblemId: competitionProblems[9].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
 
     // =========================================================
@@ -777,50 +756,42 @@ async function seedAttempts(
     {
       competitionEntryId: competitionEntries[2].id,
       competitionProblemId: competitionProblems[0].id,
-      attemptNumber: 2,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[2].id,
       competitionProblemId: competitionProblems[1].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[2].id,
       competitionProblemId: competitionProblems[2].id,
-      attemptNumber: 3,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[2].id,
       competitionProblemId: competitionProblems[3].id,
-      attemptNumber: 2,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[2].id,
       competitionProblemId: competitionProblems[4].id,
-      attemptNumber: 4,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[2].id,
       competitionProblemId: competitionProblems[5].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[2].id,
       competitionProblemId: competitionProblems[6].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
     {
       competitionEntryId: competitionEntries[2].id,
       competitionProblemId: competitionProblems[7].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
 
     // =========================================================
@@ -830,44 +801,37 @@ async function seedAttempts(
     {
       competitionEntryId: competitionEntries[3].id,
       competitionProblemId: competitionProblems[0].id,
-      attemptNumber: 2,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[3].id,
       competitionProblemId: competitionProblems[1].id,
-      attemptNumber: 3,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[3].id,
       competitionProblemId: competitionProblems[2].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
     {
       competitionEntryId: competitionEntries[3].id,
       competitionProblemId: competitionProblems[3].id,
-      attemptNumber: 4,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[3].id,
       competitionProblemId: competitionProblems[4].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
     {
       competitionEntryId: competitionEntries[3].id,
       competitionProblemId: competitionProblems[5].id,
-      attemptNumber: 2,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[3].id,
       competitionProblemId: competitionProblems[6].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
 
     // =========================================================
@@ -877,38 +841,32 @@ async function seedAttempts(
     {
       competitionEntryId: competitionEntries[4].id,
       competitionProblemId: competitionProblems[0].id,
-      attemptNumber: 3,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[4].id,
       competitionProblemId: competitionProblems[1].id,
-      attemptNumber: 4,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[4].id,
       competitionProblemId: competitionProblems[2].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
     {
       competitionEntryId: competitionEntries[4].id,
       competitionProblemId: competitionProblems[3].id,
-      attemptNumber: 5,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[4].id,
       competitionProblemId: competitionProblems[4].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
     {
       competitionEntryId: competitionEntries[4].id,
       competitionProblemId: competitionProblems[5].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
 
     // =========================================================
@@ -918,44 +876,37 @@ async function seedAttempts(
     {
       competitionEntryId: competitionEntries[5].id,
       competitionProblemId: competitionProblems[0].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[5].id,
       competitionProblemId: competitionProblems[1].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[5].id,
       competitionProblemId: competitionProblems[2].id,
-      attemptNumber: 2,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[5].id,
       competitionProblemId: competitionProblems[3].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[5].id,
       competitionProblemId: competitionProblems[4].id,
-      attemptNumber: 3,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[5].id,
       competitionProblemId: competitionProblems[5].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
     {
       competitionEntryId: competitionEntries[5].id,
       competitionProblemId: competitionProblems[6].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
 
     // =========================================================
@@ -965,37 +916,32 @@ async function seedAttempts(
     {
       competitionEntryId: competitionEntries[6].id,
       competitionProblemId: competitionProblems[0].id,
-      attemptNumber: 2,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[6].id,
       competitionProblemId: competitionProblems[1].id,
-      attemptNumber: 2,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[6].id,
       competitionProblemId: competitionProblems[2].id,
-      attemptNumber: 3,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[6].id,
       competitionProblemId: competitionProblems[3].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
     {
       competitionEntryId: competitionEntries[6].id,
       competitionProblemId: competitionProblems[4].id,
       attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
     {
       competitionEntryId: competitionEntries[6].id,
       competitionProblemId: competitionProblems[5].id,
-      attemptNumber: 4,
       result: Result.TOP,
     },
 
@@ -1006,38 +952,32 @@ async function seedAttempts(
     {
       competitionEntryId: competitionEntries[7].id,
       competitionProblemId: competitionProblems[0].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[7].id,
       competitionProblemId: competitionProblems[1].id,
-      attemptNumber: 3,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[7].id,
       competitionProblemId: competitionProblems[2].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[7].id,
       competitionProblemId: competitionProblems[3].id,
-      attemptNumber: 2,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[7].id,
       competitionProblemId: competitionProblems[4].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
     {
       competitionEntryId: competitionEntries[7].id,
       competitionProblemId: competitionProblems[5].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
 
     // =========================================================
@@ -1047,32 +987,27 @@ async function seedAttempts(
     {
       competitionEntryId: competitionEntries[8].id,
       competitionProblemId: competitionProblems[0].id,
-      attemptNumber: 3,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[8].id,
       competitionProblemId: competitionProblems[1].id,
-      attemptNumber: 4,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[8].id,
       competitionProblemId: competitionProblems[2].id,
-      attemptNumber: 2,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[8].id,
       competitionProblemId: competitionProblems[3].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
     {
       competitionEntryId: competitionEntries[8].id,
       competitionProblemId: competitionProblems[4].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
 
     // =========================================================
@@ -1082,32 +1017,27 @@ async function seedAttempts(
     {
       competitionEntryId: competitionEntries[9].id,
       competitionProblemId: competitionProblems[0].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[9].id,
       competitionProblemId: competitionProblems[1].id,
-      attemptNumber: 2,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[9].id,
       competitionProblemId: competitionProblems[2].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[9].id,
       competitionProblemId: competitionProblems[3].id,
-      attemptNumber: 2,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[9].id,
       competitionProblemId: competitionProblems[4].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
 
     // =========================================================
@@ -1117,32 +1047,27 @@ async function seedAttempts(
     {
       competitionEntryId: competitionEntries[10].id,
       competitionProblemId: competitionProblems[0].id,
-      attemptNumber: 2,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[10].id,
       competitionProblemId: competitionProblems[1].id,
-      attemptNumber: 3,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[10].id,
       competitionProblemId: competitionProblems[2].id,
-      attemptNumber: 4,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[10].id,
       competitionProblemId: competitionProblems[3].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
     {
       competitionEntryId: competitionEntries[10].id,
       competitionProblemId: competitionProblems[4].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
 
     // =========================================================
@@ -1152,26 +1077,22 @@ async function seedAttempts(
     {
       competitionEntryId: competitionEntries[11].id,
       competitionProblemId: competitionProblems[0].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[11].id,
       competitionProblemId: competitionProblems[1].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[11].id,
       competitionProblemId: competitionProblems[2].id,
-      attemptNumber: 2,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[11].id,
       competitionProblemId: competitionProblems[3].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
 
     // =========================================================
@@ -1181,32 +1102,27 @@ async function seedAttempts(
     {
       competitionEntryId: competitionEntries[12].id,
       competitionProblemId: competitionProblems[0].id,
-      attemptNumber: 2,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[12].id,
       competitionProblemId: competitionProblems[1].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[12].id,
       competitionProblemId: competitionProblems[2].id,
-      attemptNumber: 3,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[12].id,
       competitionProblemId: competitionProblems[3].id,
-      attemptNumber: 2,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
     {
       competitionEntryId: competitionEntries[12].id,
       competitionProblemId: competitionProblems[4].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
 
     // =========================================================
@@ -1216,26 +1132,22 @@ async function seedAttempts(
     {
       competitionEntryId: competitionEntries[13].id,
       competitionProblemId: competitionProblems[0].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[13].id,
       competitionProblemId: competitionProblems[1].id,
-      attemptNumber: 2,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[13].id,
       competitionProblemId: competitionProblems[2].id,
-      attemptNumber: 1,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[13].id,
       competitionProblemId: competitionProblems[3].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
 
     // =========================================================
@@ -1245,26 +1157,22 @@ async function seedAttempts(
     {
       competitionEntryId: competitionEntries[14].id,
       competitionProblemId: competitionProblems[0].id,
-      attemptNumber: 3,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[14].id,
       competitionProblemId: competitionProblems[1].id,
-      attemptNumber: 4,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[14].id,
       competitionProblemId: competitionProblems[2].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
     {
       competitionEntryId: competitionEntries[14].id,
       competitionProblemId: competitionProblems[3].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
 
     // =========================================================
@@ -1274,42 +1182,34 @@ async function seedAttempts(
     {
       competitionEntryId: competitionEntries[15].id,
       competitionProblemId: competitionProblems[0].id,
-      attemptNumber: 4,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[15].id,
       competitionProblemId: competitionProblems[1].id,
-      attemptNumber: 5,
       result: Result.TOP,
     },
     {
       competitionEntryId: competitionEntries[15].id,
       competitionProblemId: competitionProblems[2].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
     {
       competitionEntryId: competitionEntries[15].id,
       competitionProblemId: competitionProblems[3].id,
-      attemptNumber: 1,
-      result: Result.NONE,
+      result: Result.FAIL,
     },
   ];
 
   const createdAttempts: Attempt[] = [];
 
   for (const attempt of attempts) {
-    const createdAttempt = await prisma.attempt.upsert({
-      where: {
-        competitionEntryId_competitionProblemId_attemptNumber: {
-          competitionEntryId: attempt.competitionEntryId,
-          competitionProblemId: attempt.competitionProblemId,
-          attemptNumber: attempt.attemptNumber,
-        },
+    const createdAttempt = await prisma.attempt.create({
+      data: {
+        competitionEntryId: attempt.competitionEntryId,
+        competitionProblemId: attempt.competitionProblemId,
+        result: attempt.result,
       },
-      update: {},
-      create: attempt,
     });
 
     createdAttempts.push(createdAttempt);

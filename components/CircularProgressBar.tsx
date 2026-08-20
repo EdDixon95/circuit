@@ -36,9 +36,9 @@ const CircularProgressBar = ({ progress }: Props) => {
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className="text-2xl font-bold">{progress.completed}</span>
+        <span className="text-3xl font-bold">{progress.completed}</span>
 
-        <span className="text-xs text-gray-500">/ {progress.total}</span>
+        <span className="text-s text-gray-500">/ {progress.total}</span>
       </div>
     </div>
   );

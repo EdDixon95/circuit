@@ -1,27 +1,20 @@
 import { auth } from "@/auth";
-import CompetitionHomeInfo from "@/components/CompetitionHeader";
-import CompetitionInfoCard from "@/components/CompetitionInfoCard";
-import CompetitionProblemsCard from "@/components/CompetitionProblemsCard";
 import CompetitionProgressCard from "@/components/CompetitionProgressCard";
-import CompetitionRegistration from "@/components/CompetitionRegistration";
-import LeaderboardPreview from "@/components/LeaderboardPreview";
+import ProblemsList from "@/components/ProblemsList";
 import { getCompetition, getCompetitionEntry } from "@/Lib/competition";
-import { calculateLeaderboards, calculateScore } from "@/Lib/leaderboard";
 import {
   calculateAttemptedProblems,
   calculateProblemStatuses,
   calculateProgress,
 } from "@/Lib/progress";
-
 import { notFound } from "next/navigation";
 
-const EventDetailsPage = async ({
+const problems = async ({
   params,
 }: {
   params: Promise<{ gymSlug: string; competitionSlug: string }>;
 }) => {
   const { gymSlug, competitionSlug } = await params;
-
   const competition = await getCompetition(gymSlug, competitionSlug);
 
   if (!competition) {
@@ -35,16 +28,13 @@ const EventDetailsPage = async ({
     ? await getCompetitionEntry(competition.id, userId)
     : null;
 
-  const leaderboards = calculateLeaderboards(
-    competition.entries,
-    competition.categories,
-  );
-
   return (
     <main className="m-2">
-      <CompetitionHomeInfo competition={competition} />
-
-      {entry ? (
+      <div className="items-center flex flex-col">
+        <h1 className="text-xl font-bold ">{competition.name}</h1>
+        <h2>{competition.gym.name}</h2>
+      </div>
+      {entry && (
         <>
           <CompetitionProgressCard
             progress={calculateProgress(entry.attempts, competition.problems)}
@@ -54,24 +44,17 @@ const EventDetailsPage = async ({
               entry.attempts,
             )}
           />
-          <CompetitionProblemsCard
+          <h1 className="font-extrabold text-3xl my-5">Problems</h1>
+          <ProblemsList
             problemStatuses={calculateProblemStatuses(
               competition.problems,
               entry.attempts,
             )}
           />
         </>
-      ) : (
-        <>
-          <CompetitionInfoCard competition={competition} />
-          <CompetitionRegistration
-            competitionId={competition.id}
-            categories={competition.categories}
-          />
-        </>
       )}
-      <LeaderboardPreview leaderboards={leaderboards} />
     </main>
   );
 };
-export default EventDetailsPage;
+
+export default problems;

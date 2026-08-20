@@ -32,12 +32,30 @@ export function calculateScore(attempts: Attempt[]) {
     3: 5,
     4: 3,
   };
+
   let score = 0;
-  for (const attempt of attempts) {
-    if (attempt.result !== Result.TOP) {
+
+  const problemIds = [
+    ...new Set(attempts.map((attempt) => attempt.competitionProblemId)),
+  ];
+
+  for (const problemId of problemIds) {
+    const problemAttempts = attempts
+      .filter((attempt) => attempt.competitionProblemId === problemId)
+      .sort((a, b) => a.recordedAt.getTime() - b.recordedAt.getTime());
+
+    const topAttemptIndex = problemAttempts.findIndex(
+      (attempt) => attempt.result === Result.TOP,
+    );
+
+    if (topAttemptIndex === -1) {
       continue;
     }
-    score += points[attempt.attemptNumber] ?? 1;
+
+    const attemptNumber = topAttemptIndex + 1;
+
+    score += points[attemptNumber] ?? 1;
   }
+
   return score;
 }

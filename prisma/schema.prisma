@@ -182,7 +182,6 @@ model Attempt {
   id                   String   @id @default(uuid()) @db.Uuid
   competitionEntryId   String   @map("competition_entry_id") @db.Uuid
   competitionProblemId String   @map("competition_problem_id") @db.Uuid
-  attemptNumber        Int      @map("attempt_number")
   result               Result
   recordedAt           DateTime @default(now()) @map("recorded_at")
 
@@ -191,14 +190,14 @@ model Attempt {
   entry   CompetitionEntry   @relation(fields: [competitionEntryId], references: [id])
   problem CompetitionProblem @relation(fields: [competitionProblemId], references: [id])
 
-  @@unique([competitionEntryId, competitionProblemId, attemptNumber])
+  @@index([competitionEntryId, competitionProblemId])
   @@map("attempts")
 }
 
 enum Result {
   TOP
   ZONE
-  NONE
+  FAIL
 }
 
 enum ProblemColour {

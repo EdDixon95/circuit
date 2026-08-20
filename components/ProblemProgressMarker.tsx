@@ -4,7 +4,7 @@ import { CompetitionProblem } from "@prisma/client";
 
 interface Props {
   status: ProblemStatus;
-  size: 1 | 2 | 3;
+  size: 1 | 2 | 3 | 4;
   problem: CompetitionProblem;
 }
 
@@ -12,6 +12,7 @@ const sizeClasses = {
   1: "h-4 w-4 border-2",
   2: "h-6 w-6 border-4",
   3: "h-8 w-8 border-6",
+  4: "h-12 w-12 border-6",
 } as const;
 
 const ProblemProgressMarker = ({ status, size, problem }: Props) => {
