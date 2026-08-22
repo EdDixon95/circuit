@@ -1,6 +1,5 @@
 import { ProblemStatus } from "@/Lib/progress";
-import { Ban, Circle, CircleCheckBig } from "lucide-react";
-import React from "react";
+import { Ban, CircleCheckBig, CircleEllipsisIcon } from "lucide-react";
 
 interface Props {
   status: ProblemStatus;
@@ -18,12 +17,12 @@ const ProblemStatusTag = ({ status }: Props) => {
         </>
       ) : status === "ATTEMPTED" ? (
         <>
-          <Ban width={20} height={20} />
+          <CircleEllipsisIcon width={20} height={20} />
           Attempted
         </>
       ) : (
         <>
-          <Circle width={20} height={20} />
+          <Ban width={20} height={20} />
           Not Tried
         </>
       )}

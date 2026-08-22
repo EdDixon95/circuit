@@ -2,21 +2,33 @@ import { ProblemStatus } from "@/Lib/progress";
 import { CompetitionProblem } from "@prisma/client";
 import ProblemCard from "./ProblemCard";
 import ProblemProgressMarker from "./ProblemProgressMarker";
+import Link from "next/link";
 
 interface Props {
   problemStatuses: {
     problem: CompetitionProblem;
     status: ProblemStatus;
   }[];
+  gymSlug: string;
+  competitionSlug: string;
 }
 
-const CompetitionProblemsCard = ({ problemStatuses }: Props) => {
+const CompetitionProblemsCard = ({
+  problemStatuses,
+  gymSlug,
+  competitionSlug,
+}: Props) => {
   console.log(problemStatuses);
   return (
     <div className="card flex flex-col ">
       <div className="flex flex-row justify-between items-center">
         <h2 className="font-semibold text-xl">Problems</h2>
-        <span className="text-sm text-green-700">View All</span>
+        <Link
+          href={`/${gymSlug}/${competitionSlug}/problems`}
+          className="text-sm text-green-700"
+        >
+          View All
+        </Link>
       </div>
       <div className="grid grid-cols-5 grid-rows-2 gap-5 pt-2">
         {problemStatuses.slice(0, 10).map(({ problem, status }) => (

@@ -3,6 +3,7 @@ import CircularProgressBar from "./CircularProgressBar";
 import ProblemProgressMarker from "./ProblemProgressMarker";
 import { CompetitionProblem } from "@prisma/client";
 import { ProblemStatus } from "@/Lib/progress";
+import { calculateScore } from "@/Lib/leaderboard";
 
 interface Props {
   progress: {
@@ -15,12 +16,14 @@ interface Props {
     problem: CompetitionProblem;
     status: ProblemStatus;
   }[];
+  score: number;
 }
 
 const CompetitionProgressCard = ({
   progress,
   attemptedProblems,
   problemStatuses,
+  score,
 }: Props) => {
   console.log(progress);
   return (
@@ -29,7 +32,10 @@ const CompetitionProgressCard = ({
         <CircularProgressBar progress={progress} />
       </div>
       <div className="min-w-0 flex-1">
-        <h2 className="font-bold">Your Progress</h2>
+        <div className="flex justify-between">
+          <h2 className="font-bold">Your Progress</h2>
+          <p className="font-bold text-green-600">{score} Points</p>
+        </div>
         <p>
           {attemptedProblems} of {progress.total} problems attempted
         </p>

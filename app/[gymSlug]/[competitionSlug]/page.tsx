@@ -53,12 +53,15 @@ const EventDetailsPage = async ({
               competition.problems,
               entry.attempts,
             )}
+            score={calculateScore(entry.attempts)}
           />
           <CompetitionProblemsCard
             problemStatuses={calculateProblemStatuses(
               competition.problems,
               entry.attempts,
             )}
+            gymSlug={gymSlug}
+            competitionSlug={competitionSlug}
           />
         </>
       ) : (

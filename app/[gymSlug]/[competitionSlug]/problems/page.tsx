@@ -2,6 +2,7 @@ import { auth } from "@/auth";
 import CompetitionProgressCard from "@/components/CompetitionProgressCard";
 import ProblemsList from "@/components/ProblemsList";
 import { getCompetition, getCompetitionEntry } from "@/Lib/competition";
+import { calculateScore } from "@/Lib/leaderboard";
 import {
   calculateAttemptedProblems,
   calculateProblemStatuses,
@@ -28,29 +29,35 @@ const problems = async ({
     ? await getCompetitionEntry(competition.id, userId)
     : null;
 
+  if (!entry) {
+    return <>You need to enter this competition</>;
+  }
+
+  const problemStatuses = calculateProblemStatuses(
+    competition.problems,
+    entry.attempts,
+  );
+
   return (
-    <main className="m-2">
-      <div className="items-center flex flex-col">
+    <main className="m-2 flex h-screen flex-col">
+      <div className="items-center flex flex-col shrink-0">
         <h1 className="text-xl font-bold ">{competition.name}</h1>
         <h2>{competition.gym.name}</h2>
       </div>
       {entry && (
         <>
-          <CompetitionProgressCard
-            progress={calculateProgress(entry.attempts, competition.problems)}
-            attemptedProblems={calculateAttemptedProblems(entry.attempts)}
-            problemStatuses={calculateProblemStatuses(
-              competition.problems,
-              entry.attempts,
-            )}
-          />
-          <h1 className="font-extrabold text-3xl my-5">Problems</h1>
-          <ProblemsList
-            problemStatuses={calculateProblemStatuses(
-              competition.problems,
-              entry.attempts,
-            )}
-          />
+          <div className="shrink-0">
+            <CompetitionProgressCard
+              progress={calculateProgress(entry.attempts, competition.problems)}
+              attemptedProblems={calculateAttemptedProblems(entry.attempts)}
+              problemStatuses={problemStatuses}
+              score={calculateScore(entry.attempts)}
+            />
+          </div>
+          <h1 className="font-extrabold text-3xl my-5 shrink-0">Problems</h1>
+          <div className="min-h-0 flex-1 overflow-y-auto">
+            <ProblemsList problemStatuses={problemStatuses} />
+          </div>
         </>
       )}
     </main>
